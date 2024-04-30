@@ -1,3 +1,9 @@
+This is a collection of starting points for ideas for your Final Project. There are two for each level 6 module.
+
+Scroll through, or use the navigation bar within your pdf viewer to jump quickly to modules and project briefs you might be interested in.
+
+You need to choose one of the following ideas and use it as the starting point for your project proposal – which will still need to be written and submitted by yourself as part of your assessment for the Final Project module.
+
 # Project Idea Title 1: Deep Learning on a public dataset
 
 ## What problem is this project solving?
