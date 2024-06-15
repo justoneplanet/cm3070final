@@ -2,4 +2,6 @@
 *.keras
 aclImdb
 *.tar.gz
+
+*.mp4
 *.mov
