@@ -5,3 +5,5 @@ aclImdb
 
 *.mp4
 *.mov
+
+logs/*
