@@ -7,5 +7,5 @@ aclImdb
 *.mov
 
 logs/*
-sample/logs/*
+*/logs/*
 sample/dl/*
