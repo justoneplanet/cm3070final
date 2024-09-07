@@ -20494,7 +20494,7 @@ We rely on the assumption that it is supposed that it must be the best model aft
 <li>The dimensions of the embedding</li>
 <li>The number of epochs</li>
 </ul>
-<h3 id="Sequence-length-between-the-encoder-and-the-decoder">Sequence length between the encoder and the decoder<a class="anchor-link" href="#Sequence-length-between-the-encoder-and-the-decoder">&#182;</a></h3><p>The decoder sequence length was not compared because the loss value directly gets worse if the length is shorter the maximum length of the summarized text of the dataset. That does not reflect the model performance. And although the encoder sequence length can be shortened to reduce memory consumption, we must be careful because it loses the features from the dataset text.</p>
+<h3 id="Sequence-length-between-the-encoder-and-the-decoder">Sequence length between the encoder and the decoder<a class="anchor-link" href="#Sequence-length-between-the-encoder-and-the-decoder">&#182;</a></h3><p>The decoder sequence length was not compared because the loss value gets worse in the nature of the loss function regardless of the model performance if the length is shorter than the maximum length of the summarized text of the dataset. Although the encoder sequence length can be shortened to reduce memory consumption, the features are clearly lost from the dataset text.</p>
 <h2 id="Model-Size">Model Size<a class="anchor-link" href="#Model-Size">&#182;</a></h2><table>
 <thead>
 <tr>
