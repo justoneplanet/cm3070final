@@ -15164,6 +15164,52 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </ul>
 </li>
 </ol>
+<h2 id="Word-Count">Word Count<a class="anchor-link" href="#Word-Count">&#182;</a></h2><table>
+<thead>
+<tr>
+  <th>___</th>
+  <th>count</th>
+  <th>limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Total</td>
+  <td>9030</td>
+  <td>9500</td>
+</tr>
+<tr>
+  <td>Introduction</td>
+  <td>673</td>
+  <td>1000</td>
+</tr>
+<tr>
+  <td>Literature Review</td>
+  <td>2068</td>
+  <td>2500</td>
+</tr>
+<tr>
+  <td>Design</td>
+  <td>1804</td>
+  <td>2000</td>
+</tr>
+<tr>
+  <td>Implementation</td>
+  <td>1997</td>
+  <td>2000</td>
+</tr>
+<tr>
+  <td>Evaluation</td>
+  <td>1496</td>
+  <td>1500</td>
+</tr>
+<tr>
+  <td>Conclusion</td>
+  <td>992</td>
+  <td>1000</td>
+</tr>
+</tbody>
+</table>
 <h2 id="GitHub-Repository">GitHub Repository<a class="anchor-link" href="#GitHub-Repository">&#182;</a></h2><ul>
 <li><a href="https://github.com/justoneplanet/cm3070final">https://github.com/justoneplanet/cm3070final</a></li>
 </ul>
@@ -15214,10 +15260,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <li><strong>BERT</strong></li>
 <li><strong>BART</strong></li>
 <li>RetNet</li>
-<li>Neural Text Summarization: A Critical Evaluation<ul>
+<li>Neural Text Summarization: A Critical Evaluation</li>
 <li><strong>ROUGE: A Package for Automatic Evaluation of Summaries</strong></li>
-</ul>
-</li>
 <li><strong>SAMSum Corpus: A Human-annotated Dialogue Dataset for Abstractive Summarization</strong></li>
 <li>Text Summarization with Pretrained Encoders</li>
 <li>facebook/bart-large-cnn</li>
@@ -15311,7 +15355,7 @@ The performance comparison between the RetNet and the Transformer has been execu
 <li>Although the ROUGE metric is widely used, it does not factually and consistently examine summarized text, but just lexically.</li>
 <li>The bias and diversity of the dataset.</li>
 </ul>
-<h3 id="ROUGE:-A-Package-for-Automatic-Evaluation-of-Summaries">ROUGE: A Package for Automatic Evaluation of Summaries<a class="anchor-link" href="#ROUGE:-A-Package-for-Automatic-Evaluation-of-Summaries">&#182;</a></h3><p>Chin-Yew Lin suggested the Recall-Oriented Understudy for Gisting Evaluation (ROUGE) to measure the quality of a summary text. [24] Though, human judgments were traditionally used for the evaluation of the text summarization quality; it was time-consuming and costly even for simple manual evaluation, and it is impossible to be frequently executed. ROUGE is one of the methods, which correlates to human judgments, to programmatically measure the quality of summarized text. The equation is introduced as follows;</p>
+<h2 id="ROUGE:-A-Package-for-Automatic-Evaluation-of-Summaries">ROUGE: A Package for Automatic Evaluation of Summaries<a class="anchor-link" href="#ROUGE:-A-Package-for-Automatic-Evaluation-of-Summaries">&#182;</a></h2><p>Chin-Yew Lin suggested the Recall-Oriented Understudy for Gisting Evaluation (ROUGE) to measure the quality of a summary text. [24] Though, human judgments were traditionally used for the evaluation of the text summarization quality; it was time-consuming and costly even for simple manual evaluation, and it is impossible to be frequently executed. ROUGE is one of the methods, which correlates to human judgments, to programmatically measure the quality of summarized text. The equation is introduced as follows;</p>
 <blockquote>
 <p>$ROUGE-N = \frac{\sum_{S∈ReferenceSummaries}\sum_{gram_n∈S}Count_{match}(gram_n)}{\sum_{S∈(ReferenceSummaries)\sum_{gram_n∈S}Count(gram_n)}}$<br />
 [24]</p>
@@ -15505,7 +15549,31 @@ Though this might not matter to the paper, apart from CNN DailyMail, NYT, and XS
 <p>Initially, I chose the cnn_dailymail dataset because of the sufficient size for training and widely known news media, and I implemented the prototype text summarization model. It was supposed that experiments would go well.</p>
 <p>However, when I tried to increase the encoder/decoder sequence size or the vocabulary size, the training phase exhausted the RAM, and the out-of-memory error was finally caused, even though the local environment had 32GB RAM. That is, the local experiment environment did not satisfy the minimum requirement with this dataset size.</p>
 <p>As a result, I must have changed the dataset into a smaller one, and the samsum dataset, which was the smallest, was the best choice. This dataset, which was published by Samsung Research and Development, is one of the most reliable datasets.</p>
-<h2 id="Structure-of-Project">Structure of Project<a class="anchor-link" href="#Structure-of-Project">&#182;</a></h2><p>The main deliverable is a model for the text summarization task and its Jupiter notebook document. The model is provided with minimum viable code to run it. Multiple models are possibly provided because the difference in the size of each model affects the machine's requirements where it runs.</p>
+<h2 id="Structure-of-Project">Structure of Project<a class="anchor-link" href="#Structure-of-Project">&#182;</a></h2><p>The report outline is as follows:</p>
+<ul>
+<li>Introduction</li>
+<li>Literature Review</li>
+<li>Design</li>
+<li>Implementation<ul>
+<li>Preparation</li>
+<li>Dataset</li>
+<li>Base Model</li>
+<li>Basic Transformer Encoder-Decoder Model</li>
+<li>Transformer Decoder-Only Model</li>
+<li>BART Model</li>
+</ul>
+</li>
+<li>Evaluation</li>
+<li>Conclusion</li>
+</ul>
+<p>This project's main deliverable is a model for the text summarization task and its Jupiter notebook document.</p>
+<p>The model is derived through comparisons and experiments, mainly in the &quot;Implementation&quot; and &quot;Evaluation&quot; sections. Specifically, in this project, the 4 models, which are an RNN model, a Transformer encoder-decoder model, a Transformer decoder-only model, and a BART model, are developed to identify the best/better text summarization model. The Transformer encoder-decoder model, one of the basic architectures of the Transformer model, is chosen to deepen the knowledge of the Transformer, which was mentioned in the &quot;Introduction&quot; section. The reason why the other 3 models have been chosen is as follows:</p>
+<ul>
+<li>Base Model/RNN Model: This model was generally used before the Transformer model displaced it. The advantages and differences of the Transformer model are revealed.</li>
+<li>Transformer Decoder-Only Model: Another architecture for generative tasks of the Transformer model. The best choice for the text summarization task is identified.</li>
+<li>BART Model: A pre-trained model. The effectiveness and its basis of the pre-training are represented.</li>
+</ul>
+<p>Additionally, the model is provided with minimum viable code to run it. Multiple models are possibly provided because the difference in the size of each model affects the machine's requirements where it runs.</p>
 <h2 id="Key-Technologies-and-Methods">Key Technologies and Methods<a class="anchor-link" href="#Key-Technologies-and-Methods">&#182;</a></h2><p>I introduce libraries and technologies here. To be correct and objective, I explain them in my own words as little as possible, citing public documents, and websites. Instead, I explain how each technology and library is used in my own words for the project.</p>
 <h4 id="TensorFlow">TensorFlow<a class="anchor-link" href="#TensorFlow">&#182;</a></h4><p>This is a machine learning library, which is mainly used in this project.</p>
 <blockquote>
@@ -15558,7 +15626,7 @@ PyTorch is well supported on major cloud platforms, providing frictionless devel
   <figcaption style="text-align:center">Figure 3.1: Schedule</figcaption>
 </figure>
 <h2 id="Evaluation-Plan">Evaluation Plan<a class="anchor-link" href="#Evaluation-Plan">&#182;</a></h2><p>Normal testing, which is for machine learning models, and hypothesis verification are executed to evaluate the project. However, the human tester is not used to check performance because it is difficult to organize the tester team for this project free of charge.</p>
-<h3 id="Testing">Testing<a class="anchor-link" href="#Testing">&#182;</a></h3><p>For the test dataset, the following metrics are used to measure and test model performance. This is executed to numerically prove how better a generated model is.</p>
+<h3 id="Testing">Testing<a class="anchor-link" href="#Testing">&#182;</a></h3><p>The following metrics are used to evaluate model performances with the test dataset.</p>
 <ul>
 <li>Loss</li>
 <li>Accuracy</li>
@@ -15569,7 +15637,15 @@ PyTorch is well supported on major cloud platforms, providing frictionless devel
 </li>
 <li>ROUGE-L</li>
 </ul>
-<h3 id="Verification-of-Hypotheses">Verification of Hypotheses<a class="anchor-link" href="#Verification-of-Hypotheses">&#182;</a></h3><p>The following hypotheses are verified.</p>
+<p>The subject models are as follows:</p>
+<ul>
+<li>Base/Baseline Model</li>
+<li>Transformer Encoder-Decoder Model</li>
+<li>Transformer Decoder-Only Model</li>
+<li>BART Model</li>
+</ul>
+<p>First, the baseline model is built and evaluated. Next, the Transformer encoder-decoder model is built, evaluated, and compared with the baseline to numerically present how better a generated model is. The Transformer decoder-only model is built and compared with the Transformer encoder-decoder model. Finally, the BART model is compared.</p>
+<h3 id="Verification-of-Hypotheses">Verification of Hypotheses<a class="anchor-link" href="#Verification-of-Hypotheses">&#182;</a></h3><p>Additionally, the following hypotheses are verified.</p>
 <ul>
 <li>Hyperparameter tunings are significantly effective even on a Transformer model.</li>
 <li>Transformer models can generate text more sophisticatedly than dense layer models.</li>
@@ -15690,7 +15766,7 @@ PyTorch is well supported on major cloud platforms, providing frictionless devel
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Mixed-precision-Training">Mixed-precision Training<a class="anchor-link" href="#Mixed-precision-Training">&#182;</a></h3><p>This technique is introduced in the Deep Learning with Python book. [29] The 16-bit and 32-bit floating-point numbers are used in the trained model to reduce the step time, keeping the evaluation metrics. Hereby, the training time gets reduced, and the model size gets smaller.</p>
-<p>However, whether the mixed-precision works better depends on the machine where the code runs. Actually, this makes the processing 2.8 times slower on Mac Book Pro, as follows. That is why it is not used for the local Mac environments. Therefore, the mixed-precision training is enabled only on an NVIDIA GPU machine.</p>
+<p>However, whether the mixed-precision works better depends on the machine where the code runs. Actually, this makes the processing 2.8 times slower on Mac Book Pro, as follows. Therefore, the mixed-precision training is enabled only on an NVIDIA GPU machine.</p>
 <table>
 <thead>
 <tr>
@@ -16511,7 +16587,7 @@ Lee: what was the name of the song again Roy: I'll send you the link once i get 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Base-Model">Base Model<a class="anchor-link" href="#Base-Model">&#182;</a></h2><p>This time, one of the recurrent neural network models (RNN) architectures, which has an encoder and a decoder internally without any attention mechanisms, is adopted as a base model compared with the latter models (Figure 4.2).</p>
+<h2 id="Base-Model">Base Model<a class="anchor-link" href="#Base-Model">&#182;</a></h2><p>This time, one of the recurrent neural network models (RNN) architectures, which has an encoder and a decoder internally without any attention mechanisms, is adopted as a base model/baseline compared with the latter models (Figure 4.2).</p>
 <figure class="image" style="text-align:center">
   <img src="./img/seq2seq.png" />
   <figcaption>Figure 4.2: Base Model Graph</figcaption>
@@ -20446,8 +20522,8 @@ class="
 </tr>
 </tbody>
 </table>
-<p>The BART model has drastically overcome other models. Additionally, for human readers, the quality difference of summarized text on each model is larger than the metrics difference.</p>
-<p>Here, the reasons why the basic Transformer encoder-decoder model did not improve performance even though its architecture is similar to the BART model and it is experimented to have more heads, layers, units, and so on will be analyzed. The differences between the Transformer encoder-decoder model and the pre-trained BART model are visually recognizable as follows;</p>
+<p>The BART model has drastically overcome other models. The base RNN and Transformer decoder-only models are useless due to their low quality.</p>
+<p>Here, the reasons why the basic Transformer encoder-decoder model did not improve performance even though its architecture is almost identical to the BART model and it is experimented to have more heads, layers, units, and so on will be analyzed. The differences between the Transformer encoder-decoder model and the pre-trained BART model are visually recognizable as follows;</p>
 <p><strong>Transformer Encoder-Decoder Model</strong></p>
 <figure class="image" style="text-align:center">
   <img src="img/attention_transformer_encoder-decoder.png" />
@@ -20616,21 +20692,22 @@ We rely on the assumption that it is supposed that it must be the best model aft
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <hr />
-<h1 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h1><p>Up to here, I have researched text summarization tasks and derived the best model practically and experimentally.</p>
-<p>Even though the base RNN model might be improved with attention mechanisms, there is still the problem of a training time of more than 2.6 times longer. Moreover, the RNN model consumed RAM 4 times more than the Transformer encoder-decoder model in the local environment. Those were the advantages of the Transformer model shown in this project.</p>
+<h1 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h1><p>Up to here, I have revealed the effectiveness of the Transformer model for the text summarization task and derived the best model practically and experimentally.</p>
+<p>Even though the base RNN model might be improved with attention mechanisms, there is still a problem where the training time is more than 2.6 times longer. Moreover, the RNN model consumed RAM 4 times more than the Transformer encoder-decoder model in the local environment. Those were the advantages of the Transformer model shown in this project.</p>
 <p>The first basic Transformer encoder-decoder model was trained only with the dataset that I have downloaded. Even though the various hyperparameter tunings were executed for this model, the loss value only got slightly smaller, and the accuracy value only got slightly larger. The BART model, which was pre-trained with corpora, such as BooksCorpus, English Wikipedia, and CommonCrawl [28], was fine-tuned with the dataset I downloaded. This BART model easily overwhelmed the first basic Transformer model.</p>
 <p>That indicates the effectiveness and necessity of the pre-training, which is based on transfer learning. In other words, the model with the fundamental comprehension for the whole language, English in this case, is effective for the text summarization task. Meanwhile, the model without language comprehension is easily overfitted because the dataset is everything for the model, and the model does not have linguistic knowledge at all. As a result, it was problematic from the aspect of the generalization performance.</p>
 <h2 id="Future-Research">Future Research<a class="anchor-link" href="#Future-Research">&#182;</a></h2><p>This time, only the greedy search algorithm, where the most probable tokens were selected to construct, was used to decode a prediction result into a sentence. The comparison of the decoding methods was not executed. For example, if the beam search algorithm, where some of the more probable sequences at each time step are internally held and the best next token is predicted from them, was used, there would have been room to improve the quality of the predicted sequences.</p>
 <p>Additionally, if the implementation supported the visualization of all other <code>MultiHeadAttention</code> layers in a Transformer model, the <code>MultiHeadAttention</code> of the first <code>TransformerDecoder</code> could have represented which words in a dialog correspond to words in the summary. That would be the beneficial information for the report.</p>
 <p>Moreover, as shown in the visualization of the <code>MultiHeadAttention</code> of the BART model, the word tokenization, simply provided by the <code>TextVectorization</code> class, is not used. Instead, the BERT tokenizer, one of the subword segmentation/tokenization, is used in the BART model. Therefore, there are differences not only in the pre-trained but also in preprocessing and postprocessing between the Transformer encoder-decoder and BART models. Though there is no doubt of the power of pre-training, there is still room to execute the comparison in the same preconditions.</p>
+<p>Furthermore, the Transformer architecture is not perfect. The computational complexity of the self-attention mechanism is $O(n^2)$. A 2 times longer input sequence uses 4 times larger memory consumption. More advanced architectures are required to solve this problem.</p>
 <p>Finally, the ROUGE score was used to measure the summarized text quality in this report. However, they are n-gram-based metrics, and it is not always that the text that marked a higher ROUGE score corresponds to the text human readers recognize better summarization, though the metrics and the feeling are correlated. There might be a better unknown way.</p>
 <h2 id="Reflecting-on-the-Development-Process">Reflecting on the Development Process<a class="anchor-link" href="#Reflecting-on-the-Development-Process">&#182;</a></h2><p>It took a lot of time to identify the following problems in the development process:</p>
 <ol>
 <li>The loss value is higher, and the accuracy value is lower than expected.</li>
 <li>The training speed is slower than expected.</li>
 </ol>
-<p>The limitation of a model is known only empirically. That is, when we face a lower performance than expected, it is difficult to logically identify whether the reason is the limitation of the model architecture or unknown bugs that cause the lower performance. As a result, code reviews were repeated with the suspicion that there should be bugs causing the low performance. In this time-consuming process, some minor bugs were fixed. For example, one of the bugs caused the transformations of tensors to be wrong, where the end Out Of Vocabulary (OOV) tags were added incorrectly. However, they were not so impactful to its performance. The TensorBoard tool was used to visualize the model graph to find unknown bugs. Eventually, that was just the limitation of the model architecture.</p>
-<p>Moreover, the speed where the training and predicting runs is also known only empirically.</p>
+<p>When a lower performance than expected was marked, it was difficult to logically identify whether the reason was the limitation of the model architecture or unknown bugs. As a result, code reviews were repeated with the suspicion that there should be bugs causing the low performance. In this time-consuming process, some minor bugs were fixed. For example, one of the bugs caused the transformations of tensors to be wrong, where the end Out Of Vocabulary (OOV) tags were added incorrectly. However, they were not so impactful to its performance. Eventually, that was only the upper limit of the model.</p>
+<p>Moreover, the speed at which the training and predicting run is known only empirically.</p>
 <table>
 <thead>
 <tr>
@@ -20661,8 +20738,8 @@ We rely on the assumption that it is supposed that it must be the best model aft
 </tr>
 </tbody>
 </table>
-<p>The M2 Mac machine was mainly used as the development machine. The <code>tensorflow-metal</code> was used to accelerate it. However, the NVIDIA V100 GPU environment is at least 3 to 10 times faster. Especially when the RAM of the Mac is not enough for calculations, that makes a lot of swaps and at least 3 times slower than usual. The old Intel Mac was 10 times slower than the M2 Mac and useless, as shown in the above table.</p>
-<p>Whereas, when the tensor data overflowed from the NVIDIA V100 16GB GPU memory, the training program was killed by the Out-Of-Memory error (OOM). That is, it must calculate only within 16GB. Due to this restriction, the dataset was changed from the CNN dailymail dataset to the SAMSum dataset.</p>
+<p>The Mac Apple Silicon M2 was mainly used as the development machine. The <code>tensorflow-metal</code> was used to accelerate it. However, the NVIDIA V100 GPU environment is at least 3 to 10 times faster. Especially when the RAM of the Mac is not enough for calculations, that makes a lot of swaps and at least 3 times slower than usual. The old Intel Mac was 10 times slower than the M2 Mac and useless, as shown in the above table.</p>
+<p>Whereas, when the tensor data overflowed from the NVIDIA V100 16GB GPU memory, the training program was killed by the Out-Of-Memory error (OOM). That is, it must calculate only within 16GB.</p>
 <p>In this research, the KerasNLP library was used, and some classes were dependent on the <code>tensorflow-text</code> library. When the research started, the <code>tensorflow-text</code> library did not support Apple Silicon Mac, and the situation did not change until July 2024. Even though it started supporting, the BART model does not work yet.</p>
 <h2 id="Ethical-Consideration">Ethical Consideration<a class="anchor-link" href="#Ethical-Consideration">&#182;</a></h2><p>In the experiments of this research, critical problems with the dataset biases did not emerge. However, all datasets contain biases, which might be problematic. For example, the paper &quot;The Unequal Opportunities of Large Language Models: Revealing Demographic Bias through Job Recommendations&quot; [27] reveals the inequality of Large Language Models (LLM) on job recommendations as follows:</p>
 <blockquote>
@@ -20726,7 +20803,7 @@ We rely on the assumption that it is supposed that it must be the best model aft
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <hr />
-<h1 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h1><p>The hyperparameters for each model were derived throughout numerous experiments in this report. Their experiments were recorded the following files.</p>
+<h1 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h1><p>The hyperparameters for each model were derived throughout numerous experiments in this report. Their experiments were recorded in the following files of the GitHub repository.</p>
 <table>
 <thead>
 <tr>
