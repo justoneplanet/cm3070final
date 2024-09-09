@@ -15175,7 +15175,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <tbody>
 <tr>
   <td>Total</td>
-  <td>9030</td>
+  <td>9081</td>
   <td>9500</td>
 </tr>
 <tr>
@@ -15190,22 +15190,22 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </tr>
 <tr>
   <td>Design</td>
-  <td>1804</td>
+  <td>1865</td>
   <td>2000</td>
 </tr>
 <tr>
   <td>Implementation</td>
-  <td>1997</td>
+  <td>1995</td>
   <td>2000</td>
 </tr>
 <tr>
   <td>Evaluation</td>
-  <td>1496</td>
+  <td>1492</td>
   <td>1500</td>
 </tr>
 <tr>
   <td>Conclusion</td>
-  <td>992</td>
+  <td>988</td>
   <td>1000</td>
 </tr>
 </tbody>
@@ -15484,7 +15484,7 @@ Though this might not matter to the paper, apart from CNN DailyMail, NYT, and XS
 <p>Prior to testing advanced models, the hyperparameter tunings should be executed sufficiently. Even if an advanced model such as RetNet outperforms a traditional model, it is impossible to compare the advanced model and the traditional model fairly without hyperparameter tunings.</p>
 <p>Fairly comparisons derive better models that are beneficial for users. That is the reason why hyperparameter tunings are necessary.</p>
 <h4 id="Why-is-the-RetNet-model-reseached-optionally?">Why is the RetNet model reseached optionally?<a class="anchor-link" href="#Why-is-the-RetNet-model-reseached-optionally?">&#182;</a></h4><p>Optionally, the other cutting-edge models, such as the RetNet model, are examined. Generally, end users do not mind if a model is highly advanced model or not. Instead, they mind the time and performance of response. Whereas, it might be able to efficiently use resources, and that might lead to the reduction of the cost for users. This is one of the reason why the research of the RetNet model is made optional.</p>
-<h4 id="Which-dataset-is-mainly-used?">Which dataset is mainly used?<a class="anchor-link" href="#Which-dataset-is-mainly-used?">&#182;</a></h4><p>In this reseach, the following datasets are compared to choose one of them to build a model. These datasets have been mainly from the TensorFlow datasets catalog since this project adopted TensorFlow. [26] (Some of the following datasets was not able to be accessed with the TensorFlow datasets library with DownloadError.)</p>
+<h4 id="Which-dataset-is-mainly-used?">Which dataset is mainly used?<a class="anchor-link" href="#Which-dataset-is-mainly-used?">&#182;</a></h4><p>In this reseach, the following datasets are compared to choose one of them to build a model. These datasets have been mainly from the TensorFlow datasets catalog since this project adopted TensorFlow. [26] (Some of the following datasets were not able to be accessed with the TensorFlow datasets library with DownloadError.)</p>
 <table>
 <thead>
 <tr>
@@ -15546,9 +15546,15 @@ Though this might not matter to the paper, apart from CNN DailyMail, NYT, and XS
 </tr>
 </tbody>
 </table>
-<p>Initially, I chose the cnn_dailymail dataset because of the sufficient size for training and widely known news media, and I implemented the prototype text summarization model. It was supposed that experiments would go well.</p>
-<p>However, when I tried to increase the encoder/decoder sequence size or the vocabulary size, the training phase exhausted the RAM, and the out-of-memory error was finally caused, even though the local environment had 32GB RAM. That is, the local experiment environment did not satisfy the minimum requirement with this dataset size.</p>
-<p>As a result, I must have changed the dataset into a smaller one, and the samsum dataset, which was the smallest, was the best choice. This dataset, which was published by Samsung Research and Development, is one of the most reliable datasets.</p>
+<p>Initially, I chose the cnn_dailymail dataset because the size is sufficient for for training, it is widely known as a news media, it is generally used in text summarization researches, and it can be downloaded even on the Kaggle website. Then, I implemented the prototype text summarization model. It was supposed that experiments would go well.</p>
+<p>However, when I tried to increase the encoder/decoder sequence size or the vocabulary size, the training phase exhausted the RAM, and the out-of-memory error was sometimes caused, even though the local environment had 32GB RAM. That is, the local experiment environment did not satisfy the minimum requirement with this dataset size.</p>
+<p>As a result, I must have changed the dataset into a smaller one, and the samsum dataset, which was the smallest, was the best choice. This dataset, which was published by Samsung Research and Development, is one of the most reliable datasets. The reasons to be chosen this dataset are summarized as follows:</p>
+<ul>
+<li>It can be downloaded even on the Kaggle website.</li>
+<li>It is sufficiently small for the local development environment.</li>
+<li>It is widely used in text summarization researches.</li>
+<li>It is one of the reliable datasets.</li>
+</ul>
 <h2 id="Structure-of-Project">Structure of Project<a class="anchor-link" href="#Structure-of-Project">&#182;</a></h2><p>The report outline is as follows:</p>
 <ul>
 <li>Introduction</li>
@@ -15996,18 +16002,7 @@ KerasNLP 0.12.1 is expected. The running version is 0.12.1
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Standardization">Standardization<a class="anchor-link" href="#Standardization">&#182;</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div  class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Initially, the following standardization method, which is also used in text classification tasks, was used. However, this method was inappropriate for text generation tasks, which contain text summarization tasks, because it removes commas, periods, and colons that connect the speakers and what they said. Punctuations and symbols are necessary for the summarized text and essential to represent the meanings, unlike classification tasks.</p>
+<h3 id="Standardization">Standardization<a class="anchor-link" href="#Standardization">&#182;</a></h3><p>Initially, the following standardization method, which is also used in text classification tasks, was used. However, this method was inappropriate for text generation tasks, which contain text summarization tasks, because it removes commas, periods, and colons that connect the speakers and what they said. Punctuations and symbols are necessary for the summarized text and essential to represent the meanings, unlike classification tasks.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
